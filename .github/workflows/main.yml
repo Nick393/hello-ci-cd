@@ -6,5 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+      
       - name: Run tests
-        run: npm test
+        run: pytest test_main.py -v
